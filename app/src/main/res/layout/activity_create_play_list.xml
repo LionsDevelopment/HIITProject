@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreatePlayList"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/gentop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/gentopbar"
+            android:contentDescription="@string/todo" />
+
+        <ImageView
+            android:id="@+id/latterline"
+            android:layout_width="60dp"
+            android:layout_height="61dp"
+            app:srcCompat="@drawable/latterline"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/todo"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:id="@+id/backbutton"
+            android:layout_width="60dp"
+            android:layout_height="61dp"
+            android:background="@drawable/backbutton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:id="@+id/newplaytitle"
+            android:layout_width="201dp"
+            android:layout_height="46dp"
+            app:srcCompat="@drawable/newplaytitle"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/todo" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/newplbody"
+            android:contentDescription="@string/todo"
+            android:layout_width="420dp"
+            android:layout_height="637dp"
+            app:srcCompat="@drawable/newplbody"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+
+        <EditText
+            android:id="@+id/plltitle"
+            android:layout_width="271dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginLeft="44dp"
+            android:background="@drawable/plledit"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColor="@color/darklime"
+            android:layout_marginStart="34dp"
+            android:hint="@string/empty" />
+
+        <Spinner
+            android:id="@+id/dayspin"
+            android:layout_width="92dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginLeft="34dp"
+            android:background="@drawable/pltimedit"
+            android:textColor="@color/limegreen"
+            android:layout_marginStart="34dp" />
+
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>
