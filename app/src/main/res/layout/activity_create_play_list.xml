@@ -50,45 +50,83 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <ImageView
             android:id="@+id/newplbody"
             android:contentDescription="@string/todo"
-            android:layout_width="420dp"
+            android:layout_width="370dp"
             android:layout_height="637dp"
-            app:srcCompat="@drawable/newplbody"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/plledit"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"/>
 
         <EditText
             android:id="@+id/plltitle"
-            android:layout_width="271dp"
+            android:layout_width="317dp"
             android:layout_height="48dp"
-            android:layout_marginTop="75dp"
-            android:layout_marginLeft="44dp"
+            android:layout_alignStart="@+id/newplbody"
+            android:layout_alignLeft="@+id/newplbody"
+            android:layout_alignTop="@+id/newplbody"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/plledit"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:hint="@string/empty"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:textColor="@color/darklime"
-            android:layout_marginStart="34dp"
-            android:hint="@string/empty" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="4dp"
+            android:textColor="@color/darklime" />
 
         <Spinner
             android:id="@+id/dayspin"
+            android:layout_width="174dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/plltitle"
+            android:layout_alignStart="@+id/newplbody"
+            android:layout_alignLeft="@+id/newplbody"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/plledit"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <Spinner
+            android:id="@+id/timespin"
             android:layout_width="92dp"
             android:layout_height="48dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginLeft="34dp"
-            android:background="@drawable/pltimedit"
-            android:textColor="@color/limegreen"
-            android:layout_marginStart="34dp" />
+            android:layout_below="@+id/dayspin"
+            android:layout_alignStart="@+id/newplbody"
+            android:layout_alignLeft="@+id/newplbody"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/plledit"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" />
 
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="317dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/timespin"
+            android:layout_alignStart="@+id/newplbody"
+            android:layout_alignLeft="@+id/newplbody"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/plledit"
+            android:hint="@string/empty"
+            android:textColor="@color/darklime"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="55dp"
+            android:autofillHints=""
+            android:inputType="text" />
 
     </RelativeLayout>
 
