@@ -9,6 +9,12 @@
     <string name="todo">TODO</string>
     <string name="empty">Empty</string>
     <string name="test">Test</string>
+    <string name="name">Name...</string>
+    <string name="playlist_name">Playlist Name</string>
+    <string name="weekday">Weekday</string>
+    <string name="time">Time</string>
+    <string name="playlist_description">Playlist Description</string>
+    <string name="desc">Desc...</string>
     <string-array name="timeofday">
         <item>00:00</item>
         <item>01:00</item>
