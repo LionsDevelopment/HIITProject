@@ -26,6 +26,13 @@ public class CreatePlayList extends AppCompatActivity {
         adapter.setDropDownViewResource(R.layout.spinner_custom);
         spin.setAdapter(adapter);
     }
+    public String getEditText(EditText edt){
+        String edst;
+        edst = edt.getText().toString();
+        return edst;
+    }
+
+    //Start App
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +41,15 @@ public class CreatePlayList extends AppCompatActivity {
         Intent createin = getIntent();
         final EditText plltitle = findViewById(R.id.plltitle);
         final EditText plldesc = findViewById(R.id.description);
-        Spinner spintime = findViewById(R.id.timespin);
+        final EditText timespinhr = findViewById(R.id.timespinhr);
+        final EditText timespinmin = findViewById(R.id.timespinmin);
         Spinner spinday = findViewById(R.id.dayspin);
         Button backtohome = findViewById(R.id.backbutton);
+        Button confirmcreate = findViewById(R.id.confirmcreate);
+        Button cancelcreate = findViewById(R.id.cancelcreate);
 
         //Actions
         hideTopAction();
-        adaptArrayIntoSpinner(spintime, R.array.timeofday);
         adaptArrayIntoSpinner(spinday, R.array.dayofweek);
         backtohome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +57,31 @@ public class CreatePlayList extends AppCompatActivity {
                 Intent backhomein = new Intent(CreatePlayList.this, HomePage.class);
                 startActivity(backhomein);
             }
+        });
+        cancelcreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cancelbackhome = new Intent(CreatePlayList.this, HomePage.class);
+                Toast.makeText(CreatePlayList.this, "Cancelled Creation", Toast.LENGTH_LONG).show();
+                startActivity(cancelbackhome);
+            }
+        });
+        confirmcreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String playname = getEditText(plltitle);
+                final String playdesc = getEditText(plldesc);
+                final String timehr = getEditText(timespinhr);
+                final String timemin = getEditText(timespinmin);
+                Intent createbackhome = new Intent(CreatePlayList.this, HomePage.class);
+                createbackhome.putExtra("playname", playname);
+                createbackhome.putExtra("playdesc", playdesc);
+                createbackhome.putExtra("timehr", timehr);
+                createbackhome.putExtra("timemin", timemin);
+                Toast.makeText(CreatePlayList.this, "Created Playlist", Toast.LENGTH_LONG).show();
+                startActivity(createbackhome);
+            }
+
         });
         plldesc.addTextChangedListener(new TextWatcher() {
             @Override

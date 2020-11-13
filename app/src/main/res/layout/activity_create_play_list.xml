@@ -126,9 +126,10 @@
             android:paddingRight="10dp"/>
 
         <TextView
+            android:id="@+id/timetitle"
             android:layout_width="154dp"
             android:layout_height="30dp"
-            android:layout_above="@+id/timespin"
+            android:layout_above="@+id/timespinhr"
             android:layout_alignStart="@+id/newplbody"
             android:layout_alignLeft="@+id/newplbody"
             android:layout_marginStart="33dp"
@@ -139,9 +140,9 @@
             android:textColor="@color/limegreen"
             android:textSize="20sp" />
 
-        <Spinner
-            android:id="@+id/timespin"
-            android:layout_width="92dp"
+        <EditText
+            android:id="@+id/timespinhr"
+            android:layout_width="60dp"
             android:layout_height="48dp"
             android:layout_below="@+id/dayspin"
             android:layout_alignStart="@+id/newplbody"
@@ -150,8 +151,56 @@
             android:layout_marginLeft="23dp"
             android:layout_marginTop="52dp"
             android:background="@drawable/plledit"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp" />
+            android:inputType="number"
+            android:maxLength="2"
+            android:textSize="20sp"
+            android:textColor="@color/limegreen"
+            android:fontFamily="@font/volkhov"
+            android:paddingLeft="16dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="2dp"
+            android:importantForAutofill="no"
+            android:hint="@string/_00"
+            android:paddingEnd="15dp"
+            android:paddingStart="16dp" />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/timetitle"
+            android:layout_alignStart="@+id/newplbody"
+            android:layout_alignLeft="@+id/newplbody"
+            android:layout_marginStart="95dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="51dp"
+            android:fontFamily="@font/volkhov"
+            android:text="@string/colon"
+            android:textColor="@color/limegreen"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/timespinmin"
+            android:layout_width="60dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/dayspin"
+            android:layout_alignStart="@+id/newplbody"
+            android:layout_alignLeft="@+id/newplbody"
+            android:layout_marginStart="112dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="52dp"
+            android:background="@drawable/plledit"
+            android:inputType="number"
+            android:fontFamily="@font/volkhov"
+            android:textColor="@color/limegreen"
+            android:maxLength="2"
+            android:paddingLeft="16dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="2dp"
+            android:importantForAutofill="no"
+            android:hint="@string/_00"
+            android:textSize="20sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="15dp" />
 
         <TextView
             android:layout_width="200dp"
@@ -170,7 +219,7 @@
             android:id="@+id/description"
             android:layout_width="317dp"
             android:layout_height="100dp"
-            android:layout_below="@+id/timespin"
+            android:layout_below="@+id/timespinhr"
             android:layout_alignStart="@+id/newplbody"
             android:layout_alignLeft="@+id/newplbody"
             android:layout_marginStart="23dp"
@@ -190,15 +239,28 @@
             android:maxLength="300"/>
 
         <Button
+            android:id="@+id/confirmcreate"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_alignStart="@+id/newplbody"
             android:layout_alignLeft="@+id/newplbody"
             android:layout_alignBottom="@+id/newplbody"
-            android:layout_marginStart="23dp"
+            android:layout_marginStart="46dp"
             android:layout_marginLeft="23dp"
             android:layout_marginBottom="80dp"
-            android:background="@drawable/confirmunselect"/>
+            android:background="@drawable/confirmcreate"/>
+
+        <Button
+            android:id="@+id/cancelcreate"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignEnd="@+id/newplbody"
+            android:layout_alignRight="@+id/newplbody"
+            android:layout_alignBottom="@+id/newplbody"
+            android:layout_marginEnd="46dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/cancelcreate" />
 
     </RelativeLayout>
 

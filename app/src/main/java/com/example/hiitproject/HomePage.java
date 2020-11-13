@@ -26,8 +26,12 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         hideTopAction();
         Intent homin= getIntent();
-        Button createbutton = findViewById(R.id.creatplaybt);
+        final String cplayname = homin.getStringExtra("playname");
+        final String cplaydesc = homin.getStringExtra("playdesc");
+        final String ctimehr = homin.getStringExtra("timehr");
+        final String ctimemin = homin.getStringExtra("timemin");
         final SearchView searchView = (SearchView)findViewById(R.id.searchwork);
+        Button createbutton = findViewById(R.id.creatplaybt);
 
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
