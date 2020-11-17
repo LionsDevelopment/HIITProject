@@ -31,6 +31,15 @@ public class CreatePlayList extends AppCompatActivity {
         edst = edt.getText().toString();
         return edst;
     }
+    public int toInt(String s){
+        int newint;
+        try{
+            newint = Integer.parseInt(s);
+        }catch(NumberFormatException e){
+            newint = 0;
+        }
+        return newint;
+    }
 
     //Start App
     @Override
@@ -71,15 +80,21 @@ public class CreatePlayList extends AppCompatActivity {
             public void onClick(View view) {
                 final String playname = getEditText(plltitle);
                 final String playdesc = getEditText(plldesc);
-                final String timehr = getEditText(timespinhr);
-                final String timemin = getEditText(timespinmin);
+                final int timehr = toInt(getEditText(timespinhr));
+                final int timemin = toInt(getEditText(timespinmin));
                 Intent createbackhome = new Intent(CreatePlayList.this, HomePage.class);
-                createbackhome.putExtra("playname", playname);
-                createbackhome.putExtra("playdesc", playdesc);
-                createbackhome.putExtra("timehr", timehr);
-                createbackhome.putExtra("timemin", timemin);
-                Toast.makeText(CreatePlayList.this, "Created Playlist", Toast.LENGTH_LONG).show();
-                startActivity(createbackhome);
+                if(timehr > 23 || timemin > 59)
+                    Toast.makeText(CreatePlayList.this, "Need Real Time", Toast.LENGTH_LONG).show();
+                else if(playname.isEmpty() == true)
+                    Toast.makeText(CreatePlayList.this, "Please Put Name",  Toast.LENGTH_LONG).show();
+                else{
+                    createbackhome.putExtra("playname", playname);
+                    createbackhome.putExtra("playdesc", playdesc);
+                    createbackhome.putExtra("timehr", timehr);
+                    createbackhome.putExtra("timemin", timemin);
+                    Toast.makeText(CreatePlayList.this, "Created Playlist", Toast.LENGTH_LONG).show();
+                    startActivity(createbackhome);
+                }
             }
 
         });
