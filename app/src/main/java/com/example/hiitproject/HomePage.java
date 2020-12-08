@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.SearchView;
 import android.widget.Toast;
+
 
 public class HomePage extends AppCompatActivity {
     boolean clicked = false;
@@ -42,20 +44,25 @@ public class HomePage extends AppCompatActivity {
         Intent homin= getIntent();
         final SearchView searchView = (SearchView)findViewById(R.id.searchwork);
         Button createbutton = findViewById(R.id.creatplaybt);
-        Button playopenbt = new Button(this);
         LinearLayout playlists = findViewById(R.id.playlists);
-//        final boolean newplaylistboo = homin.getBooleanExtra("newplayboo");
         final String cplayname = homin.getStringExtra("playname");
         final String cplaydesc = homin.getStringExtra("playdesc");
         final String ctimehr = homin.getStringExtra("timehr");
         final String ctimemin = homin.getStringExtra("timemin");
-//        if(newplaylistboo == true) {
-//            playopenbt.setBackground(getDrawable(R.drawable.plledit));
-//            playlists.addView(playopenbt);
-//            playopenbt.setWidth(intToPixels(105));
-//            playopenbt.setHeight(intToPixels(150));
-//            playopenbt.setTop(intToPixels(15));
-//        }
+        final boolean newplaylistboo = homin.getBooleanExtra("newplaylistboo", true);
+        if(newplaylistboo == true) {
+            Button playopenbt = new Button(this);
+            playopenbt.setLayoutParams(new LinearLayout.LayoutParams(1350, 200));
+            LinearLayout.LayoutParams playbt = (LinearLayout.LayoutParams)playopenbt.getLayoutParams();
+            playbt.gravity = Gravity.CENTER;
+            playopenbt.setLayoutParams(playbt);
+            playopenbt.setBackground(getDrawable(R.drawable.plledit));
+            playlists.addView(playopenbt);
+
+        }
+        else{
+            System.out.println("No playlist");
+        }
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

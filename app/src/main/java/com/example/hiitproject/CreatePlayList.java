@@ -83,7 +83,6 @@ public class CreatePlayList extends AppCompatActivity {
         confirmcreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final boolean newplayboo2 = true;
                 final String playname = getEditText(plltitle);
                 final String playdesc = getEditText(plldesc);
                 final int timehr = toInt(getEditText(timespinhr));
@@ -98,7 +97,7 @@ public class CreatePlayList extends AppCompatActivity {
                     createbackhome.putExtra("playdesc", playdesc);
                     createbackhome.putExtra("timehr", timehr);
                     createbackhome.putExtra("timemin", timemin);
-                    createbackhome.putExtra("newplayboo", newplayboo2);
+                    createbackhome.putExtra("newplayboo", true);
                     Toast.makeText(CreatePlayList.this, "Created Playlist", Toast.LENGTH_LONG).show();
                     startActivity(createbackhome);
                 }
