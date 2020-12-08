@@ -9,14 +9,19 @@
     <string name="todo">TODO</string>
     <string name="empty">Empty</string>
     <string name="test">Test</string>
-    <string name="name">Name...</string>
+    <string name="name">Name…</string>
     <string name="playlist_name">Playlist Name</string>
     <string name="weekday">Weekday</string>
     <string name="time">Time</string>
     <string name="playlist_description">Playlist Description</string>
-    <string name="desc">Desc...</string>
+    <string name="desc">Desc…</string>
     <string name="colon">:</string>
     <string name="_00">00</string>
+    <string name="workout_name">Workout Name</string>
+    <string name="suggested_time">Suggested Time</string>
+    <string name="timesec">Time…</string>
+    <string name="workout_description">Workout Description</string>
+    <string name="secs">(secs)</string>
     <string-array name="dayofweek">
         <item>Sunday</item>
         <item>Monday</item>

@@ -36,6 +36,6 @@ public class MainActivity extends AppCompatActivity {
         try{
             this.getSupportActionBar().hide();
         }
-        catch(NullPointerException e){}
+        catch(NullPointerException e){System.out.println("TOPBARHIDDEN");}
     }
 }

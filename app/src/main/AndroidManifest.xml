@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreatePlayList"/>
+        <activity android:name=".CreateCustWork"></activity>
+        <activity android:name=".CreatePlayList" />
         <activity android:name=".HomePage" />
         <activity android:name=".MainActivity">
             <intent-filter>
