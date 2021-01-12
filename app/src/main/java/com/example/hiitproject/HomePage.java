@@ -2,6 +2,9 @@ package com.example.hiitproject;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -106,6 +109,15 @@ public class HomePage extends AppCompatActivity {
                 startActivity(cusin);
             }
         });
+
+    }
+}
+
+class DataReceiver extends BroadcastReceiver {
+    public static final String action_res = "yep got it";
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
 
     }
 }

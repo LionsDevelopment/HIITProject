@@ -25,7 +25,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
-            android:background="@drawable/custcreatebnhd" />
+            android:background="@drawable/custcreatani" />
 
         <Button
             android:id="@+id/favourites"
@@ -69,26 +69,28 @@
     <ScrollView
         android:id="@+id/playscroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="586dp"
         android:layout_gravity="center">
+
         <LinearLayout
             android:id="@+id/playlists"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center">
-            <Button
-                android:id="@+id/creatplaybt"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_gravity="center"
-                android:background="@drawable/createplayani"
-                />
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
 
         </LinearLayout>
-
-
     </ScrollView>
+
+    <Button
+        android:id="@+id/creatplaybt"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/createplayani" />
 
 
 </LinearLayout>

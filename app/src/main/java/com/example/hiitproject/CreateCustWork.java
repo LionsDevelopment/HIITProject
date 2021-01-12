@@ -23,20 +23,42 @@ public class CreateCustWork extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hideTopAction();
+        final Intent bainhome = new Intent(CreateCustWork.this, HomePage.class);
         setContentView(R.layout.activity_create_cust_work);
         final EditText cuswtime = findViewById(R.id.timesecs);
         final EditText cuswname = findViewById(R.id.cuswtitle);
         final EditText cuswdescp = findViewById(R.id.description);
+        final Button cusbackhome = findViewById(R.id.backbutton);
+        final Button cuscancleback = findViewById(R.id.cancelcreate);
+        final Button cusworkcreate = findViewById(R.id.custcreate);
+
+        cuscancleback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(bainhome);
+            }
+        });
+        cusbackhome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(bainhome);
+            }
+        });
 
         cuswname.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
             public void afterTextChanged(Editable editable) {
-                if(cuswname.getText().length() < 30 && maxChar) maxChar = false;
-                if(cuswname.getText().length() == 30 && !maxChar){
+                if (cuswname.getText().length() < 30 && maxChar) maxChar = false;
+                if (cuswname.getText().length() == 30 && !maxChar) {
                     Toast.makeText(CreateCustWork.this, "Reached Character Limit", Toast.LENGTH_LONG).show();
                     System.out.println("Max Charactered Reached");
                 }

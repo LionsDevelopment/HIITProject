@@ -92,21 +92,28 @@ public class CreatePlayList extends AppCompatActivity {
                 final String playdesc = getEditText(plldesc);
                 final int timehr = toInt(getEditText(timespinhr));
                 final int timemin = toInt(getEditText(timespinmin));
+                Intent datain = new Intent(CreatePlayList.this, DaDataClass.class);
                 Intent createbackhome = new Intent(CreatePlayList.this, HomePage.class);
                 if(timehr > 23 || timemin > 59) {
-                    //Toast.makeText(CreatePlayList.this, "Need Real Time", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreatePlayList.this, "Need Real Time", Toast.LENGTH_LONG).show();
                     System.out.println("Need Real Time");
                     Toast.makeText(CreatePlayList.this, "Need Real Time", Toast.LENGTH_LONG).show();
                 }
                 else if(playname.isEmpty() == true)
                     Toast.makeText(CreatePlayList.this, "Please Put Name",  Toast.LENGTH_LONG).show();
-                else{
+                else {
                     createbackhome.putExtra("playname", playname);
                     createbackhome.putExtra("playdesc", playdesc);
                     createbackhome.putExtra("timehr", timehr);
                     createbackhome.putExtra("timemin", timemin);
                     createbackhome.putExtra("newplayboo", true);
                     Toast.makeText(CreatePlayList.this, "Created Playlist", Toast.LENGTH_LONG).show();
+                    datain.putExtra("playname", playname);
+                    datain.putExtra("playdesc", playdesc);
+                    datain.putExtra("timehr", timehr);
+                    datain.putExtra("timemin", timemin);
+                    datain.putExtra("newplayboo", true);
+                    startService(datain);
                     startActivity(createbackhome);
                 }
             }
