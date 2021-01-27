@@ -113,8 +113,8 @@ public class CreatePlayList extends AppCompatActivity {
                     datain.putExtra("timehr", timehr);
                     datain.putExtra("timemin", timemin);
                     datain.putExtra("newplayboo", true);
-                    startService(datain);
                     startActivity(createbackhome);
+                    startService(datain);
                 }
             }
 

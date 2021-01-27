@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -17,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 //Main Class for Homepage.java
 public class HomePage extends AppCompatActivity {
@@ -46,10 +49,11 @@ public class HomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DataReceiver receiver;
         setContentView(R.layout.activity_home_page);
         hideTopAction();
-        Intent homin= getIntent();
-        final SearchView searchView = (SearchView)findViewById(R.id.searchwork);
+        Intent homin = getIntent();
+        final SearchView searchView = (SearchView) findViewById(R.id.searchwork);
         Button createbutton = findViewById(R.id.creatplaybt);
         Button createcusworkbt = findViewById(R.id.custcreate);
         LinearLayout playlists = findViewById(R.id.playlists);
@@ -59,23 +63,27 @@ public class HomePage extends AppCompatActivity {
         final String cplaydesc = homin.getStringExtra("playdesc");
         final String ctimehr = homin.getStringExtra("timehr");
         final String ctimemin = homin.getStringExtra("timemin");
+        IntentFilter filter = new IntentFilter(DataReceiver.action_res);
+        filter.addCategory(Intent.CATEGORY_INFO);
+        receiver = new DataReceiver();
+        registerReceiver(receiver, filter);
         newplaylistboo = false;
         //Catches when the boolean newplayboo is empty
         try {
             newplaylistboo = b.getBoolean("newplayboo");
+        } catch (NullPointerException e) {
+            System.out.println("Boolean newplayboo is empty");
         }
-        catch (NullPointerException e){System.out.println("Boolean newplayboo is empty");}
         //Creates playlist when newplaylistboo is true
-        if(newplaylistboo == true) {
+        if (newplaylistboo == true) {
             Button playopenbt = new Button(this);
             playopenbt.setLayoutParams(new LinearLayout.LayoutParams(1350, 400));
-            LinearLayout.LayoutParams playbt = (LinearLayout.LayoutParams)playopenbt.getLayoutParams();
+            LinearLayout.LayoutParams playbt = (LinearLayout.LayoutParams) playopenbt.getLayoutParams();
             playbt.gravity = Gravity.CENTER;
             playopenbt.setLayoutParams(playbt);
             playopenbt.setBackground(getDrawable(R.drawable.plledit));
             playlists.addView(playopenbt);
-        }
-        else{
+        } else {
             System.out.println("No playlist");
         }
         //Search View on activity_home_page.xml
@@ -118,6 +126,7 @@ class DataReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
+        ArrayList<String> daplaylist = intent.getStringArrayListExtra("arrayplayna");
+        System.out.println(daplaylist);
     }
 }

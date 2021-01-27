@@ -38,18 +38,20 @@ public class DaDataClass extends IntentService {
         final String cplaydesc = datain.getStringExtra("playdesc");
         final String ctimehr = datain.getStringExtra("timehr");
         final String ctimemin = datain.getStringExtra("timemin");
-        if (cplaydesc == null)
+        if (cplayname == null)
             System.out.println("empty");
-        else
+        else {
             System.out.println("Not empty");
-        ArrayList<String> newplayadd = addInfoForPlay(cplayname, cplaydesc, ctimehr, ctimemin);
-        daplaylists.add(newplayadd);
-        System.out.println(daplaylists);
-        Intent broadcastIntent = new Intent();
-        String arrayplayna = "";
-        broadcastIntent.putStringArrayListExtra(arrayplayna, newplayadd);
+            ArrayList<String> newplayadd = addInfoForPlay(cplayname, cplaydesc, ctimehr, ctimemin);
+            daplaylists.add(newplayadd);
+            System.out.println(daplaylists);
+            Intent broadcastIntent = new Intent();
+            broadcastIntent.setAction(DataReceiver.action_res);
+            broadcastIntent.addCategory(Intent.CATEGORY_INFO);
+            broadcastIntent.putStringArrayListExtra("arrayplayna", newplayadd);
+            sendBroadcast(broadcastIntent);
+        }
     }
-
 }
 
 
