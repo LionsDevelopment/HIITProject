@@ -56,6 +56,7 @@ public class HomePage extends AppCompatActivity {
         final SearchView searchView = (SearchView) findViewById(R.id.searchwork);
         Button createbutton = findViewById(R.id.creatplaybt);
         Button createcusworkbt = findViewById(R.id.custcreate);
+        Button playopenbt = new Button(this);
         LinearLayout playlists = findViewById(R.id.playlists);
         Bundle b = homin.getExtras();
         //Playlist Information
@@ -63,10 +64,6 @@ public class HomePage extends AppCompatActivity {
         final String cplaydesc = homin.getStringExtra("playdesc");
         final String ctimehr = homin.getStringExtra("timehr");
         final String ctimemin = homin.getStringExtra("timemin");
-        IntentFilter filter = new IntentFilter(DataReceiver.action_res);
-        filter.addCategory(Intent.CATEGORY_INFO);
-        receiver = new DataReceiver();
-        registerReceiver(receiver, filter);
         newplaylistboo = false;
         //Catches when the boolean newplayboo is empty
         try {
@@ -76,7 +73,6 @@ public class HomePage extends AppCompatActivity {
         }
         //Creates playlist when newplaylistboo is true
         if (newplaylistboo == true) {
-            Button playopenbt = new Button(this);
             playopenbt.setLayoutParams(new LinearLayout.LayoutParams(1350, 400));
             LinearLayout.LayoutParams playbt = (LinearLayout.LayoutParams) playopenbt.getLayoutParams();
             playbt.gravity = Gravity.CENTER;
@@ -115,6 +111,13 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent cusin = new Intent(HomePage.this, CreateCustWork.class);
                 startActivity(cusin);
+            }
+        });
+        //Playlistbutton that is created after information is put in
+        playopenbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomePage.this, cplayname + cplaydesc + ctimehr + ctimemin, Toast.LENGTH_LONG).show();
             }
         });
 

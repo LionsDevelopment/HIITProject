@@ -43,7 +43,7 @@ public class CreatePlayList extends AppCompatActivity {
         }
         return newint;
     }
-    //Personal toString boolean
+    //Personal toString
     public String toString(boolean boo){
         String s = "";
         s += boo;
@@ -92,7 +92,7 @@ public class CreatePlayList extends AppCompatActivity {
                 final String playdesc = getEditText(plldesc);
                 final int timehr = toInt(getEditText(timespinhr));
                 final int timemin = toInt(getEditText(timespinmin));
-                Intent datain = new Intent(CreatePlayList.this, DaDataClass.class);
+                Intent datain = new Intent(DaDataClass.ACTION_START);
                 Intent createbackhome = new Intent(CreatePlayList.this, HomePage.class);
                 if(timehr > 23 || timemin > 59) {
                     Toast.makeText(CreatePlayList.this, "Need Real Time", Toast.LENGTH_LONG).show();
@@ -104,8 +104,8 @@ public class CreatePlayList extends AppCompatActivity {
                 else {
                     createbackhome.putExtra("playname", playname);
                     createbackhome.putExtra("playdesc", playdesc);
-                    createbackhome.putExtra("timehr", timehr);
-                    createbackhome.putExtra("timemin", timemin);
+                    createbackhome.putExtra("timehr", toString(timehr));
+                    createbackhome.putExtra("timemin", toString(timemin));
                     createbackhome.putExtra("newplayboo", true);
                     Toast.makeText(CreatePlayList.this, "Created Playlist", Toast.LENGTH_LONG).show();
                     datain.putExtra("playname", playname);
@@ -116,6 +116,12 @@ public class CreatePlayList extends AppCompatActivity {
                     startActivity(createbackhome);
                     startService(datain);
                 }
+            }
+
+            private String toString(int time) {
+                String s = "";
+                s += time;
+                return s;
             }
 
         });

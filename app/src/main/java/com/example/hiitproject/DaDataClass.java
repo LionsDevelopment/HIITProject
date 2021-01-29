@@ -1,9 +1,11 @@
 package com.example.hiitproject;
 
 import android.app.IntentService;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,11 +15,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Array;
 import java.util.ArrayList;
 
-public class DaDataClass extends IntentService {
+public class DaDataClass extends Service {
     ArrayList<ArrayList> daplaylists = new ArrayList<>();
+    static final String ACTION_START = "com.idkwahattoputhere.yummy.ACTION_START";
 
-    public DaDataClass() {
-        super("DaDataClass");
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
+        String action = intent.getAction();
+        System.out.println("ACTION: " + action);
+        switch (action) {
+            case ACTION_START:
+                String plname = intent.getStringExtra("plname");
+                break;
+        }
+        return START_STICKY;
     }
 
     public ArrayList addInfoForPlay(String name, String desc, String timehr, String timemin) {
@@ -29,34 +45,6 @@ public class DaDataClass extends IntentService {
         return playinfo;
     }
 
-    @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
-        Intent datain = new Intent(this, CreatePlayList.class);
-        Bundle b = datain.getExtras();
-        //Playlist Information
-        final String cplayname = datain.getStringExtra("playname");
-        final String cplaydesc = datain.getStringExtra("playdesc");
-        final String ctimehr = datain.getStringExtra("timehr");
-        final String ctimemin = datain.getStringExtra("timemin");
-        if (cplayname == null)
-            System.out.println("empty");
-        else {
-            System.out.println("Not empty");
-            ArrayList<String> newplayadd = addInfoForPlay(cplayname, cplaydesc, ctimehr, ctimemin);
-            daplaylists.add(newplayadd);
-            System.out.println(daplaylists);
-            Intent broadcastIntent = new Intent();
-            broadcastIntent.setAction(DataReceiver.action_res);
-            broadcastIntent.addCategory(Intent.CATEGORY_INFO);
-            broadcastIntent.putStringArrayListExtra("arrayplayna", newplayadd);
-            sendBroadcast(broadcastIntent);
-        }
-    }
+
 }
 
-
-//class DaPlaylists extends DaDataClass {
-//}
-//
-//class DaCusWorks extends DaDataClass {
-//}
