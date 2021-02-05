@@ -12,8 +12,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class CreatePlayList extends AppCompatActivity {
     private boolean maxChar = true;
+    DaDataClass mService = new DaDataClass();
     //Hides the top heaader
     public void hideTopAction(){
         try{
@@ -60,7 +63,7 @@ public class CreatePlayList extends AppCompatActivity {
         final EditText plldesc = findViewById(R.id.description);
         final EditText timespinhr = findViewById(R.id.timespinhr);
         final EditText timespinmin = findViewById(R.id.timespinmin);
-        Spinner spinday = findViewById(R.id.dayspin);
+        final Spinner spinday = findViewById(R.id.dayspin);
         Button backtohome = findViewById(R.id.backbutton);
         Button confirmcreate = findViewById(R.id.confirmcreate);
         Button cancelcreate = findViewById(R.id.cancelcreate);
@@ -90,9 +93,9 @@ public class CreatePlayList extends AppCompatActivity {
             public void onClick(View view) {
                 final String playname = getEditText(plltitle);
                 final String playdesc = getEditText(plldesc);
+                final String playdayof = spinday.getSelectedItem().toString();
                 final int timehr = toInt(getEditText(timespinhr));
                 final int timemin = toInt(getEditText(timespinmin));
-                Intent datain = new Intent(DaDataClass.ACTION_START);
                 Intent createbackhome = new Intent(CreatePlayList.this, HomePage.class);
                 if(timehr > 23 || timemin > 59) {
                     Toast.makeText(CreatePlayList.this, "Need Real Time", Toast.LENGTH_LONG).show();
@@ -106,15 +109,13 @@ public class CreatePlayList extends AppCompatActivity {
                     createbackhome.putExtra("playdesc", playdesc);
                     createbackhome.putExtra("timehr", toString(timehr));
                     createbackhome.putExtra("timemin", toString(timemin));
+                    createbackhome.putExtra("playdayof", playdayof);
                     createbackhome.putExtra("newplayboo", true);
                     Toast.makeText(CreatePlayList.this, "Created Playlist", Toast.LENGTH_LONG).show();
-                    datain.putExtra("playname", playname);
-                    datain.putExtra("playdesc", playdesc);
-                    datain.putExtra("timehr", timehr);
-                    datain.putExtra("timemin", timemin);
-                    datain.putExtra("newplayboo", true);
+                    ArrayList<String> info = mService.addInfoForPlay(playname, playdesc, toString(timehr), toString(timemin), playdayof);
+                    createbackhome.putExtra("playinfo", info);
                     startActivity(createbackhome);
-                    startService(datain);
+
                 }
             }
 
