@@ -2,12 +2,14 @@ package com.example.hiitproject;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -18,13 +20,19 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
+
 import java.util.ArrayList;
+import java.util.Hashtable;
+
+import static android.graphics.Typeface.BOLD;
+import static java.security.AccessController.getContext;
 
 //Main Class for Homepage.java
 public class HomePage extends AppCompatActivity {
     boolean clicked = false;
     boolean newplaylistboo;
     boolean mBound = false;
+    private static Hashtable<String, Typeface> fontCache = new Hashtable<String, Typeface>();
     DaDataClass mService;
 
     //Hides the standard android studio header
@@ -62,6 +70,19 @@ public class HomePage extends AppCompatActivity {
         }
     };
 
+    public static Typeface createFont(String name, Context context) {
+        Typeface tf = fontCache.get(name);
+        if (tf == null) {
+            try {
+                tf = Typeface.createFromAsset(context.getAssets(), name);
+            } catch (Exception e) {
+                return null;
+            }
+            fontCache.put(name, tf);
+        }
+        return tf;
+    }
+
     //Main loop for activity_home_page.xml
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -73,15 +94,16 @@ public class HomePage extends AppCompatActivity {
         Button createbutton = findViewById(R.id.creatplaybt);
         Button createcusworkbt = findViewById(R.id.custcreate);
         Button playopenbt = new Button(this);
+        Typeface volkhovTypeface = createFont("font/volkhov.ttf", playopenbt.getContext());
         LinearLayout playlists = findViewById(R.id.playlists);
         Intent homin = getIntent();
         Bundle b = homin.getExtras();
         //Playlist Information
         final String cplayname = homin.getStringExtra("playname");
-        final String cplaydesc = homin.getStringExtra("playdesc");
-        final String ctimehr = homin.getStringExtra("timehr");
-        final String ctimemin = homin.getStringExtra("timemin");
-        final String cplaydayof = homin.getStringExtra("playdayof");
+//        final String cplaydesc = homin.getStringExtra("playdesc");
+//        final String ctimehr = homin.getStringExtra("timehr");
+//        final String ctimemin = homin.getStringExtra("timemin");
+//        final String cplaydayof = homin.getStringExtra("playdayof");
         final ArrayList<String> info = homin.getStringArrayListExtra("playinfo");
         newplaylistboo = false;
         //Catches when the boolean newplayboo is empty
@@ -97,6 +119,10 @@ public class HomePage extends AppCompatActivity {
             playbt.gravity = Gravity.CENTER;
             playopenbt.setLayoutParams(playbt);
             playopenbt.setBackground(getDrawable(R.drawable.plledit));
+            playopenbt.setTypeface(volkhovTypeface, BOLD);
+            playopenbt.setText(cplayname);
+            playopenbt.setTextSize(25f);
+            playopenbt.setTextColor(ContextCompat.getColor(playopenbt.getContext(), R.color.darklime));
             playlists.addView(playopenbt);
         } else {
             System.out.println("No playlist");
@@ -137,13 +163,13 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //HomePage.this.mService.printPlayListGiven();
-                Toast.makeText(HomePage.this, cplayname + cplaydesc + ctimehr + ctimemin + cplaydayof + " " + info, Toast.LENGTH_LONG).show();
+                Toast.makeText(HomePage.this, "" + info, Toast.LENGTH_LONG).show();
+
 
             }
         });
 
     }
-
     @Override
     protected void onStart() {
         super.onStart();

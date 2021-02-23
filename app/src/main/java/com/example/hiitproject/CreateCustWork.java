@@ -68,14 +68,24 @@ public class CreateCustWork extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
             @Override
             public void afterTextChanged(Editable editable) {
-                if(cuswdescp.getText().length() < 200 && maxChar) maxChar = false;
-                if(cuswdescp.getText().length() == 200 && !maxChar){
+                if (cuswdescp.getText().length() < 200 && maxChar) maxChar = false;
+                if (cuswdescp.getText().length() == 200 && !maxChar) {
                     Toast.makeText(CreateCustWork.this, "Reached Character Limit", Toast.LENGTH_LONG).show();
                     System.out.println("Max Characters Reached");
                 }
+            }
+        });
+
+        cusworkcreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cuswname.getText() == null || cuswtime.getText() == null)
+                    Toast.makeText(CreateCustWork.this, "Missing Information", Toast.LENGTH_LONG).show();
             }
         });
 
