@@ -8,17 +8,13 @@ import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 public class DaDataClass extends Service {
     private final IBinder binder = new LocalBinder();
-    static final String ACTION_START = "com.idkwahattoputhere.yummy.ACTION_START";
-    ArrayList<String> playinfo = new ArrayList<>();
+    ArrayList<ArrayList> playinfo = new ArrayList<>();
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -37,11 +33,12 @@ public class DaDataClass extends Service {
         return info;
     }
 
-    public void printPlayListGiven() {
-        if (playinfo != null)
-            System.out.println(playinfo);
-        else
-            System.out.println("NoPlayList");
+    public void addInfoArrayToPlayinfo(ArrayList arrayList) {
+        playinfo.add(arrayList);
+    }
+
+    public boolean isArrayListEmpty() {
+        return playinfo.isEmpty();
     }
 
     public class LocalBinder extends Binder {

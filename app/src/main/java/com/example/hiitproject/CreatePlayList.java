@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class CreatePlayList extends AppCompatActivity {
     private boolean maxChar = true;
-    DaDataClass mService = new DaDataClass();
+    DaDataClass daObject = (DaDataClass) MainActivity.getObjService();
     //Hides the top heaader
     public void hideTopAction(){
         try{
@@ -105,14 +105,13 @@ public class CreatePlayList extends AppCompatActivity {
                 else if(playname.isEmpty() == true)
                     Toast.makeText(CreatePlayList.this, "Please Put Name",  Toast.LENGTH_LONG).show();
                 else {
-                    createbackhome.putExtra("playname", playname);
                     createbackhome.putExtra("playdesc", playdesc);
                     createbackhome.putExtra("timehr", toString(timehr));
                     createbackhome.putExtra("timemin", toString(timemin));
                     createbackhome.putExtra("playdayof", playdayof);
-                    createbackhome.putExtra("newplayboo", true);
                     Toast.makeText(CreatePlayList.this, "Created Playlist", Toast.LENGTH_LONG).show();
-                    ArrayList<String> info = mService.addInfoForPlay(playname, playdesc, toString(timehr), toString(timemin), playdayof);
+                    ArrayList<String> info = daObject.addInfoForPlay(playname, playdesc, toString(timehr), toString(timemin), playdayof);
+                    daObject.addInfoArrayToPlayinfo(info);
                     createbackhome.putExtra("playinfo", info);
                     startActivity(createbackhome);
 

@@ -81,13 +81,6 @@ public class CreateCustWork extends AppCompatActivity {
             }
         });
 
-        cusworkcreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (cuswname.getText() == null || cuswtime.getText() == null)
-                    Toast.makeText(CreateCustWork.this, "Missing Information", Toast.LENGTH_LONG).show();
-            }
-        });
 
     }
 }

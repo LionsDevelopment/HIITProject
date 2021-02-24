@@ -3,8 +3,6 @@ package com.example.hiitproject;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
-import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -20,20 +18,17 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Hashtable;
-
 import static android.graphics.Typeface.BOLD;
-import static java.security.AccessController.getContext;
 
 //Main Class for Homepage.java
 public class HomePage extends AppCompatActivity {
     boolean clicked = false;
-    boolean newplaylistboo;
-    boolean mBound = false;
+    boolean newplaylistboo = true;
+    DaDataClass daObject = (DaDataClass) MainActivity.getObjService();
     private static Hashtable<String, Typeface> fontCache = new Hashtable<String, Typeface>();
-    DaDataClass mService;
+
 
     //Hides the standard android studio header
     public void hideTopAction() {
@@ -55,20 +50,6 @@ public class HomePage extends AppCompatActivity {
         s += boo;
         return s;
     }
-
-    private ServiceConnection connection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder service) {
-            DaDataClass.LocalBinder binder = (DaDataClass.LocalBinder) service;
-            mService = binder.getService();
-            mBound = true;
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-            mBound = false;
-        }
-    };
 
     public static Typeface createFont(String name, Context context) {
         Typeface tf = fontCache.get(name);
@@ -97,23 +78,22 @@ public class HomePage extends AppCompatActivity {
         Typeface volkhovTypeface = createFont("font/volkhov.ttf", playopenbt.getContext());
         LinearLayout playlists = findViewById(R.id.playlists);
         Intent homin = getIntent();
-        Bundle b = homin.getExtras();
+        Bundle bun = homin.getExtras();
         //Playlist Information
-        final String cplayname = homin.getStringExtra("playname");
-//        final String cplaydesc = homin.getStringExtra("playdesc");
-//        final String ctimehr = homin.getStringExtra("timehr");
-//        final String ctimemin = homin.getStringExtra("timemin");
-//        final String cplaydayof = homin.getStringExtra("playdayof");
+        String cplayname = "";
         final ArrayList<String> info = homin.getStringArrayListExtra("playinfo");
-        newplaylistboo = false;
-        //Catches when the boolean newplayboo is empty
         try {
-            newplaylistboo = b.getBoolean("newplayboo");
+            newplaylistboo = daObject.isArrayListEmpty();
         } catch (NullPointerException e) {
-            System.out.println("Boolean newplayboo is empty");
+            System.out.println("Empty");
+        }
+        try {
+            cplayname = (String) daObject.playinfo.get(0).get(0);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Empty");
         }
         //Creates playlist when newplaylistboo is true
-        if (newplaylistboo == true) {
+        if (newplaylistboo == false) {
             playopenbt.setLayoutParams(new LinearLayout.LayoutParams(1350, 400));
             LinearLayout.LayoutParams playbt = (LinearLayout.LayoutParams) playopenbt.getLayoutParams();
             playbt.gravity = Gravity.CENTER;
@@ -170,11 +150,6 @@ public class HomePage extends AppCompatActivity {
         });
 
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Intent intent = new Intent(this, DaDataClass.class);
-        bindService(intent, connection, Context.BIND_AUTO_CREATE);
-    }
+
 }
 
