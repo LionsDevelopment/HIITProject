@@ -33,7 +33,7 @@
             android:layout_height="61dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:background="@drawable/favouritesbnhd"
+            android:background="@drawable/favbtnani"
             android:layout_alignParentEnd="true" />
 
         <Button

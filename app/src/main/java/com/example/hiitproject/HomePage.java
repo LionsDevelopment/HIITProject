@@ -74,6 +74,7 @@ public class HomePage extends AppCompatActivity {
         final SearchView searchView = (SearchView) findViewById(R.id.searchwork);
         Button createbutton = findViewById(R.id.creatplaybt);
         Button createcusworkbt = findViewById(R.id.custcreate);
+        Button favpage = findViewById(R.id.favourites);
         Button playopenbt = new Button(this);
         Typeface volkhovTypeface = createFont("font/volkhov.ttf", playopenbt.getContext());
         LinearLayout playlists = findViewById(R.id.playlists);
@@ -143,9 +144,17 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //HomePage.this.mService.printPlayListGiven();
-                Toast.makeText(HomePage.this, "" + info, Toast.LENGTH_LONG).show();
+                Toast.makeText(HomePage.this, "" + daObject.playinfo.get(0), Toast.LENGTH_LONG).show();
 
 
+            }
+        });
+        //Opens favourite list button
+        favpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotofav = new Intent(HomePage.this, FavouritePage.class);
+                startActivity(gotofav);
             }
         });
 
