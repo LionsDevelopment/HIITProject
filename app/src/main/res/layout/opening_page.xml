@@ -10,7 +10,6 @@
     tools:context=".MainActivity"
     android:background="@drawable/gradient1">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="242dp"

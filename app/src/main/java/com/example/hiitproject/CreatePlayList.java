@@ -46,13 +46,6 @@ public class CreatePlayList extends AppCompatActivity {
         }
         return newint;
     }
-    //Personal toString
-    public String toString(boolean boo){
-        String s = "";
-        s += boo;
-        return s;
-    }
-
     //App main loop
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +98,6 @@ public class CreatePlayList extends AppCompatActivity {
                 else if(playname.isEmpty() == true)
                     Toast.makeText(CreatePlayList.this, "Please Put Name",  Toast.LENGTH_LONG).show();
                 else {
-                    createbackhome.putExtra("playdesc", playdesc);
-                    createbackhome.putExtra("timehr", toString(timehr));
-                    createbackhome.putExtra("timemin", toString(timemin));
-                    createbackhome.putExtra("playdayof", playdayof);
                     Toast.makeText(CreatePlayList.this, "Created Playlist", Toast.LENGTH_LONG).show();
                     ArrayList<String> info = daObject.addInfoForPlay(playname, playdesc, toString(timehr), toString(timemin), playdayof);
                     daObject.addInfoArrayToPlayinfo(info);
@@ -117,7 +106,6 @@ public class CreatePlayList extends AppCompatActivity {
 
                 }
             }
-
             private String toString(int time) {
                 String s = "";
                 s += time;

@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.RemoteException;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -15,6 +14,7 @@ import java.util.ArrayList;
 public class DaDataClass extends Service {
     private final IBinder binder = new LocalBinder();
     ArrayList<ArrayList> playinfo = new ArrayList<>();
+    ArrayList<ArrayList> workinfo = new ArrayList<>();
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -33,12 +33,24 @@ public class DaDataClass extends Service {
         return info;
     }
 
+    public ArrayList addInfoForWork(String name, String desc, String time) {
+        ArrayList<String> workin = new ArrayList<>();
+        workin.add(name);
+        workin.add(desc);
+        workin.add(time);
+        return workin;
+    }
+
     public void addInfoArrayToPlayinfo(ArrayList arrayList) {
         playinfo.add(arrayList);
     }
 
-    public boolean isArrayListEmpty() {
-        return playinfo.isEmpty();
+    public void addWorkArraytoWorkinfo(ArrayList arrayList) {
+        workinfo.add(arrayList);
+    }
+
+    public boolean isArrayListEmpty(ArrayList arrrylist) {
+        return arrrylist.isEmpty();
     }
 
     public class LocalBinder extends Binder {

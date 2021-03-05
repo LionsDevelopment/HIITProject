@@ -7,12 +7,16 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class CreateCustWork extends AppCompatActivity {
     private boolean maxChar = true;
+    DaDataClass daObject = (DaDataClass) MainActivity.getObjService();
     //Hides original top bar
     public void hideTopAction(){
         try{
@@ -31,7 +35,7 @@ public class CreateCustWork extends AppCompatActivity {
         final EditText cuswdescp = findViewById(R.id.description);
         final Button cusbackhome = findViewById(R.id.backbutton);
         final Button cuscancleback = findViewById(R.id.cancelcreate);
-        final Button cusworkcreate = findViewById(R.id.custcreate);
+        final Button cusworkcreate = findViewById(R.id.confirmcreate);
 
         cuscancleback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +82,18 @@ public class CreateCustWork extends AppCompatActivity {
                     Toast.makeText(CreateCustWork.this, "Reached Character Limit", Toast.LENGTH_LONG).show();
                     System.out.println("Max Characters Reached");
                 }
+            }
+        });
+        cusworkcreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> workinfo = daObject.addInfoForWork(cuswname.getText().toString(), cuswdescp.getText().toString(), cuswtime.getText().toString());
+                daObject.addWorkArraytoWorkinfo(workinfo);
+                Toast.makeText(CreateCustWork.this, "" + workinfo, Toast.LENGTH_LONG).show();
+                Intent favin = new Intent(CreateCustWork.this, FavouritePage.class);
+                startActivity(favin);
+
+
             }
         });
 

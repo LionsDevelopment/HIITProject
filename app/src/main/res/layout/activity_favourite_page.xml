@@ -53,7 +53,17 @@
         android:layout_height="550dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:background="@drawable/plledit"></ScrollView>
+        android:background="@drawable/plledit">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <Button
         android:id="@+id/creatfavbt"

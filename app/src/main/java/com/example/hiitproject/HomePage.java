@@ -3,7 +3,6 @@ package com.example.hiitproject;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -39,18 +38,6 @@ public class HomePage extends AppCompatActivity {
         }
     }
 
-    //Transfers integers into pixel measurements for xml
-    public int intToPixels(int i) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, i, getResources().getDisplayMetrics());
-    }
-
-    //Personal boolean to string method
-    public String toString(boolean boo) {
-        String s = "";
-        s += boo;
-        return s;
-    }
-
     public static Typeface createFont(String name, Context context) {
         Typeface tf = fontCache.get(name);
         if (tf == null) {
@@ -84,7 +71,7 @@ public class HomePage extends AppCompatActivity {
         String cplayname = "";
         final ArrayList<String> info = homin.getStringArrayListExtra("playinfo");
         try {
-            newplaylistboo = daObject.isArrayListEmpty();
+            newplaylistboo = daObject.isArrayListEmpty(daObject.playinfo);
         } catch (NullPointerException e) {
             System.out.println("Empty");
         }
@@ -105,9 +92,9 @@ public class HomePage extends AppCompatActivity {
             playopenbt.setTextSize(25f);
             playopenbt.setTextColor(ContextCompat.getColor(playopenbt.getContext(), R.color.darklime));
             playlists.addView(playopenbt);
-        } else {
+        } else
             System.out.println("No playlist");
-        }
+
         //Search View on activity_home_page.xml
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
