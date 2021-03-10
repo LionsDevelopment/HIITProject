@@ -33,11 +33,12 @@ public class DaDataClass extends Service {
         return info;
     }
 
-    public ArrayList addInfoForWork(String name, String desc, String time) {
+    public ArrayList addInfoForWork(String name, String desc, String time, String rest) {
         ArrayList<String> workin = new ArrayList<>();
         workin.add(name);
         workin.add(desc);
         workin.add(time);
+        workin.add(rest);
         return workin;
     }
 

@@ -9,6 +9,7 @@ import android.content.ServiceConnection;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.HardwarePropertiesManager;
 import android.os.IBinder;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -132,7 +133,8 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View view) {
                 //HomePage.this.mService.printPlayListGiven();
                 Toast.makeText(HomePage.this, "" + daObject.playinfo.get(0), Toast.LENGTH_LONG).show();
-
+                Intent popup = new Intent(HomePage.this, PlaylisyPopup.class);
+                startActivity(popup);
 
             }
         });

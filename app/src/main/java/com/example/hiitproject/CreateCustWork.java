@@ -33,6 +33,7 @@ public class CreateCustWork extends AppCompatActivity {
         final EditText cuswtime = findViewById(R.id.timesecs);
         final EditText cuswname = findViewById(R.id.cuswtitle);
         final EditText cuswdescp = findViewById(R.id.description);
+        final EditText cusrest = findViewById(R.id.restsecs);
         final Button cusbackhome = findViewById(R.id.backbutton);
         final Button cuscancleback = findViewById(R.id.cancelcreate);
         final Button cusworkcreate = findViewById(R.id.confirmcreate);
@@ -87,13 +88,11 @@ public class CreateCustWork extends AppCompatActivity {
         cusworkcreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<String> workinfo = daObject.addInfoForWork(cuswname.getText().toString(), cuswdescp.getText().toString(), cuswtime.getText().toString());
+                ArrayList<String> workinfo = daObject.addInfoForWork(cuswname.getText().toString(), cuswdescp.getText().toString(), cuswtime.getText().toString(), cusrest.getText().toString());
                 daObject.addWorkArraytoWorkinfo(workinfo);
                 Toast.makeText(CreateCustWork.this, "" + workinfo, Toast.LENGTH_LONG).show();
                 Intent favin = new Intent(CreateCustWork.this, FavouritePage.class);
                 startActivity(favin);
-
-
             }
         });
 

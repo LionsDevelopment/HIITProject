@@ -6,4 +6,10 @@
         <item name="colorPrimaryDark">@color/darkgrey</item>
         <item name="colorAccent">@color/limegreen</item>
     </style>
+
+    <style name="AppTheme.PopupTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@drawable/plledit</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
 </resources>

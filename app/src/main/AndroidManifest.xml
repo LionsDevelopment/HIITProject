@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FavouritePage"></activity>
+        <activity
+            android:name=".PlaylisyPopup"
+            android:theme="@style/AppTheme.PopupTheme"></activity>
+        <activity android:name=".FavouritePage" />
         <activity android:name=".CreateCustWork" />
         <activity android:name=".CreatePlayList" />
         <activity android:name=".HomePage" />
