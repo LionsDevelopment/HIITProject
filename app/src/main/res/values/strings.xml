@@ -22,6 +22,7 @@
     <string name="timesec">Time…</string>
     <string name="workout_description">Workout Description</string>
     <string name="secs">(secs)</string>
+    <string name="rest_time">Rest Time</string>
     <string-array name="dayofweek">
         <item>Sunday</item>
         <item>Monday</item>

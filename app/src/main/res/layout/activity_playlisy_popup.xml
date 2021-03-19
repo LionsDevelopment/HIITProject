@@ -8,7 +8,7 @@
     tools:context=".PlaylisyPopup">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="0dp"
@@ -19,22 +19,52 @@
         tools:layout_editor_absoluteY="1dp">
 
         <Button
+            android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="55dp"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/backpopani" />
 
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/plledit"
+            android:editable="false"
+            android:fontFamily="@font/volkhov"
+            android:gravity="center_horizontal"
+            android:inputType="none"
+            android:maxLines="1"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/limegreen"
+            android:textSize="30sp" />
+
         <Button
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginLeft="290dp"
+            android:id="@+id/edit"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="176dp"
+            android:layout_marginLeft="118dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-
+            android:layout_toEndOf="@+id/back"
+            android:layout_toRightOf="@+id/back"
             android:background="@drawable/editstarun" />
-    </LinearLayout>
+    </RelativeLayout>
 
+    <ScrollView
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="44.5dp"
+        android:layout_marginLeft="44.5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/plledit">
+
+
+    </ScrollView>
 
 </LinearLayout>

@@ -155,7 +155,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginBottom="-159dp"
             android:fontFamily="@font/volkhov"
-            android:text="Rest Time"
+            android:text="@string/rest_time"
             android:textColor="@color/limegreen"
             android:textSize="20sp" />
 
