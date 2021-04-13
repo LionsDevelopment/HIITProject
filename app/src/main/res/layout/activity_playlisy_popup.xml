@@ -24,7 +24,8 @@
             android:layout_height="55dp"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/backpopani" />
+            android:background="@drawable/backpopani"
+            android:theme="" />
 
         <EditText
             android:id="@+id/title"
@@ -50,21 +51,19 @@
             android:layout_height="50dp"
             android:layout_marginStart="176dp"
             android:layout_marginLeft="118dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/back"
             android:layout_toRightOf="@+id/back"
             android:background="@drawable/editstarun" />
     </RelativeLayout>
 
-    <ScrollView
+    <EditText
         android:layout_width="200dp"
         android:layout_height="70dp"
         android:layout_marginStart="44.5dp"
         android:layout_marginLeft="44.5dp"
+        android:editable="false"
         android:layout_marginTop="10dp"
-        android:background="@drawable/plledit">
-
-
-    </ScrollView>
+        android:background="@drawable/plledit"></EditText>
 
 </LinearLayout>
